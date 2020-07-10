@@ -1,0 +1,99 @@
+<html>
+	
+	<head>
+		<title>Refrescar la URL</title>
+		
+		<script>
+			var num=10; 
+			function contador() { 
+				num--; 
+				if(num==0)  detectar();
+				document.getElementById('seg').innerHTML=num; 
+			} 
+		
+		function detectar(){
+
+			navegador=navigator.userAgent; //busco el "userAgent" del usuario.
+
+			//lista de palabras del "userAgent" en los móviles
+
+			moviles=["Mobile","iPhone","iPod","BlackBerry","Opera Mini","Sony","MOT","Nokia","samsung"];
+
+			detector=0; //Variable que detectará si se usa un móvil
+
+			for (i in moviles) { //comprobar en la lista ...
+
+ 	  		//si el método "indexOf" no devuelve -1, indica que la palabra está en el "userAgent"
+
+   				compruebo=navegador.indexOf(moviles[i]); 
+
+   				if (compruebo>-1) { 
+
+      				detector=1; //Si es un móvil, cambio el valor del detector
+
+      			}
+
+   			}
+
+			if (detector==1) { //si es un móvil redirecciono la página.
+
+  				location.href="https://elroonix98.github.io/web_movil/index.html"; //Se redirecciona hacia la versión móvil.
+
+   			}else{
+   				location.href="https://elroonix98.github.io/ejemplo/menu.html";
+   			}
+   		}
+
+		</script>
+		
+	</head>
+
+	<br><br><br><br>
+	
+	<body onload="setInterval('contador()',1000)" style = "background-color:black">
+		
+		<br><br><br><br><br><br><br><br><br>
+		
+		<div class = "preloader"></div>
+		
+		<br><br><br><br><br>
+		
+		<h1 id = "texto"><font color = "white"><p>ESPERA<a style = "visibility: hidden">__</a><span id = "seg">10</span><a style = "visibility: hidden">__</a>SEGUNDOS</p></font></h1>
+		
+	</body>
+
+	
+
+	<style>
+	
+	h1#texto{
+		text-align:center;
+	}
+	
+	.preloader {
+		display:block;
+		margin-right:auto;
+		margin-left:auto;
+		width: 50%;
+		max-width: 200px;
+		height: 200px;
+		border: 10px solid #eee;
+		border-top: 10px solid #666;
+		border-radius: 50%;
+		animation-name: girar;
+		animation-duration: 2s;
+		animation-iteration-count: infinite;
+		animation-timing-function: linear;
+	}
+	@keyframes girar {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
+	}
+	
+	</style>
+
+</html>
